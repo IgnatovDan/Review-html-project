@@ -8,8 +8,13 @@
   Отвечать на эти вопросы не нужно, нужно найти проблемы в коде и отметить их
 -->
 
+<!-- Отлично: использован тэг "header" и отдельно от него настройки стилей на классе "header" -->
 <header class="header">
   <div class="menu">
+    <!-- 
+      Дочерние элементы для "menu" выглядят как навигация по приложению.
+      Для таких элементов надо использовать тэг "nav", https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    -->
     <!-- Пример замечания:
       Отлично: использование ссылки для логотипа - правильное решение!
     -->
@@ -23,8 +28,16 @@
     <div class="menu__items-list">
       <a href="./" class="menu__link menu__link_selected">Главная</a>
       <div class="menu__items-single-item">
+        <!--
+          Такой перенос закрывающей скобки ">" на новую строку затрудняет чтение разметки и не влияет на отображение
+          Надо изменить: оставлять ">" на одной строке с тегом
+        -->
         <span class="menu__link menu__link--logged"
           >Юзер
+          <!--
+            Надо изменить: этот элемент позволяет пользователю выполнить действие и для него надо использовать тэг "button" или "a"
+            См https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+          -->
           <span class="menu__logout"></span>
         </span>
       </div>
@@ -33,12 +46,24 @@
   <div class="header__title-wrapper">
     <h1 class="header__title">Что в мире творится?</h1>
     <p class="header__subtitle">
+      <!--
+        Такое разбиение закрывающего тэга ">" на две строки затрудняет чтение разметки и не влияет на отображение
+        Надо изменить: писать весь "</b>" на новой строке
+      -->
       <b
         >Находите самые свежие статьи на любую тему и сохраняйте в своём
         личном кабинете.</b
       >
     </p>
     <div class="header__form">
+      <!--
+        Поля ввода логически связаны с кнопкой для подтверждения ввода этих полей
+        Нужно изменить: использовать тэг "form" для группировки полей и кнопки подтверждения ввода
+        См https://developer.mozilla.org/en-US/docs/Learn/Forms
+      -->
+      <!--
+        Отлично: атрибуты для тэга оформлены на отдельных строчках - это очень облегчает чтение разметки
+      -->
       <input
         class="header__form-input"
         type="text"
@@ -46,10 +71,19 @@
         placeholder="Введите тему новости"
         required
       />
+      <!--
+        Надо изменить: этот элемент позволяет пользователю выполнить действие и для него надо использовать тэг "button"
+        См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+      -->
       <span class="button header__button">Искать</span>
     </div>
   </div>
 </header>
+<!--
+  Секция прогресса поиска и результата "Ничего не найдено" является частью основного содержания этой страницы.
+  Нужно исправить: Добавить эту секцию внутрь тэга "main"
+  См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+-->
 <section class="preloader">
   <div class="preloader__message" id="preloader-searching">
     <i class="circle-preloader"></i>
@@ -64,6 +98,11 @@
       src="./images/not-found.svg"
       alt="no"
     />
+    <!--
+      Заголовку выставлен меньший уровень, чем детальному описанию: h4 vs h5.
+      Нужно исправить: для более общего заголовка использовать тэг с более высоким уровнем
+      https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
+    -->
     <h5 class="preloader__title">Ничего не найдено</h5>
     <h4 class="preloader__subtitle">
       К сожалению по вашему запросу ничего не найдено.
@@ -71,6 +110,11 @@
   </div>
 </section>
 <main class="results">
+  <!--
+    Для основного заголовка использован тэг h5
+    Нужно исправить: это основной заголовок всей страницы и для него подходит тэг "h1"
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#usage_notes
+  -->
   <h5 class="results__title">Результаты поиска</h5>
   <div class="results__news">
     <a href="#" class="card">
@@ -241,6 +285,11 @@
 <section class="auth-form__wrapper_hide" id="login-form">
   <form class="auth-form">
     <div class="auth-form__close" id="close-login-form"></div>
+    <!--
+      Использован тэг "h4" вне иерархии тегов h1->h2->h3->h4
+      Нужно исправить: сделать последовательную вложенность тэгов
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
+    -->
     <h4 class="auth-form__title">Вход</h4>
     <span class="auth-form__subtitle">E-mail</span>
     <input class="auth-form__input" type="text" placeholder="Введите почту" required>
@@ -302,6 +351,14 @@
 
 <div class="overlay"></div>
 <!-- 
+  Общий комментарий:
+    Отлично:
+      - В разметке использованы тэги header/section/main/footer
+    
+    Можно лучше:
+      - использовать больше семантических тэгов: article/nav/aside
+        См https://developer.mozilla.org/en-US/docs/Glossary/Semantics + https://www.w3schools.com/html/html5_semantic_elements.asp
+
   Общие замечания:
 
     - Название этого файла содержит русские буквы: "задание 1.html"
