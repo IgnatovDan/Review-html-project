@@ -79,6 +79,7 @@
     </div>
   </div>
 </header>
+<!-- Отлично: Для отображения прогресса поиска сделан дополнительный элемент -->
 <!--
   Секция прогресса поиска и результата "Ничего не найдено" является частью основного содержания этой страницы.
   Нужно исправить: Добавить эту секцию внутрь тэга "main"
@@ -111,8 +112,9 @@
 </section>
 <main class="results">
   <!--
-    Для основного заголовка использован тэг h5
-    Нужно исправить: это основной заголовок всей страницы и для него подходит тэг "h1"
+    Использован тэг "h5" вне иерархии тегов h1->h2->h3->h4
+    Нужно исправить: сделать последовательное использование тэгов
+    См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
     https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#usage_notes
   -->
   <h5 class="results__title">Результаты поиска</h5>
@@ -232,6 +234,11 @@
   <button class="button results__button">Показать еще</button>
 </main>
 <section class="about results__about">
+  <!--
+    Элемент "address" выглядит более подходящим для секции "Об авторе", а сама секция больше подходит для размещения в "footer".
+    Можно лучше: Использовать "address" и расположить эту информацию в "footer", если она относится ко всей странице.
+    См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address + https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+  -->
   <h3 class="about__title">Об авторе</h3>
   <div class="about__text">
     Vivamus sed volutpat odio. Praesent placerat gravida erat, in ornare
@@ -281,13 +288,25 @@
   </p>
 </footer>
 </div>
+<!--
+  Нет закрывающего тэга для "modal"
+  Надо исправить: добавить явный закрывающий тэг для элемента "modal"
+-->
 <div id="modal">
+
+<!--
+  Отлично: для login/signup/ok сделаны отдельные элементы
+-->
+<!--
+  Элементы login/signup являются основным контентом страницы, для которого предусмотрен тэг "main"
+  Надо исправить: декларировать эти элементы внутри тэга main
+-->
 <section class="auth-form__wrapper_hide" id="login-form">
   <form class="auth-form">
     <div class="auth-form__close" id="close-login-form"></div>
     <!--
       Использован тэг "h4" вне иерархии тегов h1->h2->h3->h4
-      Нужно исправить: сделать последовательную вложенность тэгов
+      Нужно исправить: сделать последовательное использование тэгов
       См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
     -->
     <h4 class="auth-form__title">Вход</h4>
@@ -362,9 +381,9 @@
   Общие замечания:
 
     - Название этого файла содержит русские буквы: "задание 1.html"
-    Этот файл лежит на странице https://praktikum.notion.site/09fd5107e6964c0584989931b30f81ac в архиве [codereview-test-html-3.zip](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7d9428a3-04f8-4f1a-8c9b-6c93f760fd38/codereview-test-html-3.zip)
+    (Этот файл лежит на странице https://praktikum.notion.site/09fd5107e6964c0584989931b30f81ac в архиве [codereview-test-html-3.zip](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7d9428a3-04f8-4f1a-8c9b-6c93f760fd38/codereview-test-html-3.zip))
     
-    Однако, из-за внутренних особенностей формата ZIP в хранении названий файлов, это название показывается как "ºáñá¡¿Ñ 1.html",
+    Однако, из-за внутренних особенностей формата ZIP по хранению названий файлов, это название показывается как "ºáñá¡¿Ñ 1.html",
     если в системе windows выставлено значение "English" для настройки "Language for non-unicode programs".
     Видимо, файл был сохранен в windows, где для настройки "Language for non-unicode programs" выставлено значение "Русский"
     (или в аналогичной конфигурации MacOS/Linux)
