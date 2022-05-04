@@ -401,7 +401,17 @@
       См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
     -->
     <span class="auth-form__subtitle">E-mail</span>
+    <!--
+      Использован обобщенный type="text", хотя должен быть введен именно email адрес
+      Можно лучше: использовать тип ввода именно для этих данных
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email
+    -->
     <input class="auth-form__input" type="text" placeholder="Введите почту" required>
+    <!--
+      Ошибки ввода сделаны отдельными полями.
+      Можно лучше: показать все ошибки единым списком, который смогут читать screen readers.
+      См https://medium.com/net-magazine/create-simple-accessible-web-forms-535cd253dee2
+    -->
     <span class="auth-form__error-message" id="error-email-login">
         Введите корректный email!
       <!--
@@ -465,6 +475,7 @@
     <!-- Использовано слово "subtitle" для названия каждого едитора в форме. -->
     <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
     <span class="auth-form__subtitle">E-mail</span>
+    <!-- Использован обобщенный type="text", хотя должен быть введен именно email адрес -->
     <input class="auth-form__input" placeholder="Введите почту" type="text" required>
     <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введите корректный email!</span>
     <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
