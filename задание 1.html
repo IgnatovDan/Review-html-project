@@ -131,6 +131,10 @@
     </h4>
   </div>
 </section>
+<!--
+  В названии блока использовано очень обобщенное слово "results"
+  Можно лучше: использовать более выразительное слово, обозначающее список "каких-то элементов"
+-->
 <main class="results">
   <!--
     Использован тэг "h5" вне иерархии тегов h1->h2->h3->h4
@@ -145,6 +149,11 @@
     Можно лучше: использовать независимое слово, обозначающее список "каких-то элементов"
   -->
   <div class="results__news">
+    <!--
+      Использован обобщенный тэг <a> для каждого элемента, хотя это список похожих независимых элементов
+      Нужно исправить: использовать section/article
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section + https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    -->
     <a href="#" class="card">
       <div class="card__body">
         <!--
@@ -166,6 +175,11 @@
             Это облегчает клиентским приложениям добавление событий в календарь пользователя.
             Более подробно о данном теге и об его использовании вы можете узнать здесь:
             https://developer.mozilla.org/ru/docs/Web/HTML/Element/time
+          -->
+          <!--
+            Использован тэг "h4" для заголовка
+            Можно лучше: использовать тэг "header"
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header#article_header
           -->
           <!-- Использовано одинарное подчеркивание "card_img" -->
           <p class="card_date">2 августа, 2019</p>
@@ -374,11 +388,17 @@
       Использован тэг "h4" вне иерархии тегов h1->h2->h3->h4
       Нужно исправить: сделать последовательное использование тэгов
       См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
+      + https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#accessibility_concerns
     -->
     <h4 class="auth-form__title">Вход</h4>
     <!--
       Использовано слово "subtitle" для названия каждого едитора в форме.
       Надо изменить: использовать болле подходящее по смыслу название, например 'input-label'
+    -->
+    <!--
+      Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label"
+      Нужно исправить: использовать тэг "label" и связать его с полем ввода
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
     -->
     <span class="auth-form__subtitle">E-mail</span>
     <input class="auth-form__input" type="text" placeholder="Введите почту" required>
@@ -392,7 +412,14 @@
       -->
       </span>
     <!-- Использовано слово "subtitle" для названия каждого едитора в форме. -->
+    <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
     <span class="auth-form__subtitle">Пароль</span>
+    <!-- 
+      Использован type="text" для вводе пароля.
+      Такой вариант не скрывает введенные символы и не безопасен.
+      Нужно изменить: использовать type="password"
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password
+    -->
     <input class="auth-form__input" type="text" placeholder="Введите пароль" required>
     <span class="auth-form__error-message auth-form__error-message_hide" id="error-password-login">
         Поле не может быть пустым!
@@ -436,11 +463,14 @@
     <div class="auth-form__close" id="close-signup-form"></div>
     <h4 class="auth-form__title">Регистрация</h4>
     <!-- Использовано слово "subtitle" для названия каждого едитора в форме. -->
+    <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
     <span class="auth-form__subtitle">E-mail</span>
     <input class="auth-form__input" placeholder="Введите почту" type="text" required>
     <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введите корректный email!</span>
+    <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
     <!-- Использовано слово "subtitle" для названия каждого едитора в форме. -->
     <span class="auth-form__subtitle">Пароль</span>
+    <!-- Использован type="text" для вводе пароля. -->
     <input class="auth-form__input" type="text" placeholder="Введите пароль" minlength="8"
           required>
     <span class="auth-form__error-message" id="error-password">
