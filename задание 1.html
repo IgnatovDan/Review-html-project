@@ -8,8 +8,19 @@
   Отвечать на эти вопросы не нужно, нужно найти проблемы в коде и отметить их
 -->
 
+<!--
+  В файле не хватает DOCTYPE/html/head/meta тэгов
+  Надо исправить: добавить эти теги с нужными значениями
+  См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head + https://htmlacademy.ru/blog/articles/doctype
+-->
+
+<!-- Отлично: использован тэг "header" и отдельно от него настройки стилей на классе "header" -->
 <header class="header">
   <div class="menu">
+    <!-- 
+      Дочерние элементы для "menu" выглядят как навигация по приложению.
+      Для таких элементов надо использовать тэг "nav", https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    -->
     <!-- Пример замечания:
       Отлично: использование ссылки для логотипа - правильное решение!
     -->
@@ -23,8 +34,21 @@
     <div class="menu__items-list">
       <a href="./" class="menu__link menu__link_selected">Главная</a>
       <div class="menu__items-single-item">
+        <!--
+          Такой перенос закрывающей скобки ">" на новую строку затрудняет чтение разметки и не влияет на отображение
+          Надо изменить: оставлять ">" на одной строке с тегом
+        -->
+        <!--
+          Формат названия 'menu__link--logged' не согласован с остальными.
+          Надо изменить: сделать название по принятым соглашениям.
+          См https://ru.bem.info/methodology/naming-convention/
+        -->
         <span class="menu__link menu__link--logged"
           >Юзер
+          <!--
+            Надо изменить: этот элемент позволяет пользователю выполнить действие и для него надо использовать тэг "button" или "a"
+            См https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+          -->
           <span class="menu__logout"></span>
         </span>
       </div>
@@ -33,12 +57,24 @@
   <div class="header__title-wrapper">
     <h1 class="header__title">Что в мире творится?</h1>
     <p class="header__subtitle">
+      <!--
+        Такое разбиение закрывающего тэга ">" на две строки затрудняет чтение разметки и не влияет на отображение
+        Надо изменить: писать весь "</b>" на новой строке
+      -->
       <b
         >Находите самые свежие статьи на любую тему и сохраняйте в своём
         личном кабинете.</b
       >
     </p>
     <div class="header__form">
+      <!--
+        Поля ввода логически связаны с кнопкой для подтверждения ввода этих полей
+        Нужно изменить: использовать тэг "form" для группировки полей и кнопки подтверждения ввода
+        См https://developer.mozilla.org/en-US/docs/Learn/Forms
+      -->
+      <!--
+        Отлично: атрибуты для тэга оформлены на отдельных строчках - это очень облегчает чтение разметки
+      -->
       <input
         class="header__form-input"
         type="text"
@@ -46,40 +82,93 @@
         placeholder="Введите тему новости"
         required
       />
+      <!--
+        Для actionable UI элемента использован тэг "span"
+        Надо изменить: этот элемент позволяет пользователю выполнить действие и для него надо использовать тэг "button"
+        См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+      -->
       <span class="button header__button">Искать</span>
     </div>
   </div>
 </header>
+<!-- Отлично: Для отображения прогресса поиска сделан дополнительный элемент -->
 <section class="preloader">
   <div class="preloader__message" id="preloader-searching">
+    <!--
+      Исользован класс "circle-preloader"
+      Нужно исправить: по такому соглашению называются самостоятельные блоки, а это элемент блока "preloader"
+      См https://ru.bem.info/methodology/naming-convention/
+    -->
     <i class="circle-preloader"></i>
     <h5 class="preloader__subtitle">Идет поиск новостей...</h5>
   </div>
+  <!--
+    Исользован класс "preloader__hide"
+    Нужно исправить: по такому соглашению называются элементы блоков, а это модификатор блока
+    См https://ru.bem.info/methodology/naming-convention/
+  -->
   <div
     class="preloader__message preloader__hide"
     id="preloader-not-found"
   >
+    <!--
+      Использован текст "no" для атибута "alt"
+      Надо исправить: сделать понятное описание картинки.
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-alt
+    -->
     <img
       class="preloader__icon"
       src="./images/not-found.svg"
       alt="no"
     />
+    <!--
+      Заголовку выставлен меньший уровень, чем детальному описанию: h4 vs h5.
+      Нужно исправить: для более общего заголовка использовать тэг с более высоким уровнем
+      https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
+    -->
     <h5 class="preloader__title">Ничего не найдено</h5>
     <h4 class="preloader__subtitle">
       К сожалению по вашему запросу ничего не найдено.
     </h4>
   </div>
 </section>
+<!--
+  В названии блока использовано очень обобщенное слово "results"
+  Можно лучше: использовать более выразительное слово, обозначающее список "каких-то элементов"
+-->
 <main class="results">
+  <!--
+    Использован тэг "h5" вне иерархии тегов h1->h2->h3->h4
+    Нужно исправить: сделать последовательное использование тэгов
+    См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#usage_notes
+  -->
   <h5 class="results__title">Результаты поиска</h5>
+  <!--
+    Использовано слово "news" в названии элемента: "results__news"
+    Хотя в результатах поиска это будет список элементов
+    Можно лучше: использовать независимое слово, обозначающее список "каких-то элементов"
+  -->
   <div class="results__news">
+    <!--
+      Использован обобщенный тэг <a> для каждого элемента, хотя это список похожих независимых элементов
+      Нужно исправить: использовать section/article
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section + https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    -->
     <a href="#" class="card">
       <div class="card__body">
+        <!--
+          Использовано одинарное подчеркивание "card_image-wrapper"
+          Надо исправить: сделать согласованные разделители в названиях элементов
+          См https://ru.bem.info/methodology/naming-convention/
+        -->
         <div class="card_image-wrapper">
+          <!-- Использовано одинарное подчеркивание "card_img" -->
           <div class="card_img"></div>
         </div>
         <div class="card__icon"></div>
         <p class="card__warning">Войдите, чтобы сохранять статьи</p>
+        <!-- Использовано одинарное подчеркивание "card_img" -->
         <div class="card_wrapper">
           <!-- Пример замечания:
             Можно лучше: для дат существует специальный тег <time>.
@@ -88,8 +177,16 @@
             Более подробно о данном теге и об его использовании вы можете узнать здесь:
             https://developer.mozilla.org/ru/docs/Web/HTML/Element/time
           -->
+          <!--
+            Использован тэг "h4" для заголовка
+            Можно лучше: использовать тэг "header"
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header#article_header
+          -->
+          <!-- Использовано одинарное подчеркивание "card_img" -->
           <p class="card_date">2 августа, 2019</p>
+          <!-- Использовано одинарное подчеркивание "card_img" -->
           <h4 class="card_title">Why do we use it?</h4>
+          <!-- Использовано одинарное подчеркивание "card_img" -->
           <div class="card_text">
             It is a long established fact that a reader will be distracted by<br />
             the readable content of a page when looking at its layout. The point<br />
@@ -160,14 +257,24 @@
     </a>
     <a href="#" class="card">
       <div class="card__body">
+        <!--
+          Использовано одинарное подчеркивание "card_image-wrapper"
+          Надо исправить: сделать согласованные разделители в названиях элементов
+          См https://ru.bem.info/methodology/naming-convention/
+        -->
         <div class="card_image-wrapper">
+          <!-- Использовано одинарное подчеркивание "card_img" -->
           <div class="card_img"></div>
         </div>
         <div class="card__icon"></div>
         <p class="card__warning">Войдите, чтобы сохранять статьи</p>
+        <!-- Использовано одинарное подчеркивание "card_wrapper" -->
         <div class="card_wrapper">
+          <!-- Использовано одинарное подчеркивание "card_date" -->
           <p class="card_date">2 августа, 2019</p>
+          <!-- Использовано одинарное подчеркивание "card_title" -->
           <h4 class="card_title">Why do we use it?</h4>
+          <!-- Использовано одинарное подчеркивание "card_text" -->
           <div class="card_text">
             It is a long established fact that a reader will be distracted by<br />
             the readable content of a page when looking at its layout. The point<br />
@@ -182,12 +289,18 @@
           </div>
         </div>
       </div>
+      <!-- Использовано одинарное подчеркивание "card_src" -->
       <p class="card_src">lipsum.com</p>
     </a>
   </div>
   <button class="button results__button">Показать еще</button>
 </main>
 <section class="about results__about">
+  <!--
+    Элемент "address" выглядит более подходящим для секции "Об авторе", а сама секция больше подходит для размещения в "footer".
+    Можно лучше: Использовать "address" и расположить эту информацию в "footer", если она относится ко всей странице.
+    См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address + https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+  -->
   <h3 class="about__title">Об авторе</h3>
   <div class="about__text">
     Vivamus sed volutpat odio. Praesent placerat gravida erat, in ornare
@@ -217,12 +330,19 @@
     <li class="footer__menu-item"><a href="./">Главная</a></li>
     <li class="footer__menu-item"><a href="./about/">О проекте</a></li>
     <li class="footer__menu-item">
+      <!-- Такой перенос закрывающей скобки ">" на новую строку затрудняет чтение разметки и не влияет на отображение -->
       <a href="https://praktikum.yandex.ru" target="_blank"
         >Яндекс.Практикум</a
       >
     </li>
   </ul>
   <p class="footer__links">
+    <!--
+      Сделаны разные переносы атрибутов одного и того же тэга.
+      Такое форматирование затрудняем чтение разметки и может приводить к изменениям "только форматирование".
+      Нужно исправить: сделать одинаковые переносы.
+      VSCode может делать переносы автоматически, см https://stackoverflow.com/questions/50241599/vscode-automatically-adding-new-lines-on-save
+    -->
     <a href="#" class="footer__social-icon" target="_blank">
       <img src="./images/social/git.svg" alt="Logo" />
     </a>
@@ -236,40 +356,129 @@
     <br />
   </p>
 </footer>
+
+<!--
+  Нет открывающего тэга для "div"
+  Надо исправить: добавить явный открывающий тэг
+-->
 </div>
+
+<!--
+  Нет закрывающего тэга для "modal"
+  Надо исправить: добавить явный закрывающий тэг для элемента "modal"
+-->
 <div id="modal">
+
+<!--
+  Отлично: для login/signup/ok сделаны отдельные элементы
+-->
+<!--
+  Название "auth-form__wrapper_hide" использовано вне блока "auth-form"
+  Надо изменить: использовать названия блоков для элементов внутри блока.
+  См https://ru.bem.info/methodology/naming-convention/
+-->
 <section class="auth-form__wrapper_hide" id="login-form">
   <form class="auth-form">
-    <div class="auth-form__close" id="close-login-form"></div>
+      <!-- Для actionable UI элемента использован тэг "div" -->
+      <div class="auth-form__close" id="close-login-form"></div>
+    <!--
+      Использован тэг "h4" вне иерархии тегов h1->h2->h3->h4
+      Нужно исправить: сделать последовательное использование тэгов
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
+      + https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#accessibility_concerns
+    -->
     <h4 class="auth-form__title">Вход</h4>
+    <!--
+      Использовано слово "subtitle" для названия каждого едитора в форме.
+      Надо изменить: использовать болле подходящее по смыслу название, например 'input-label'
+    -->
+    <!--
+      Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label"
+      Нужно исправить: использовать тэг "label" и связать его с полем ввода
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    -->
     <span class="auth-form__subtitle">E-mail</span>
+    <!--
+      Использован обобщенный type="text", хотя должен быть введен именно email адрес
+      Можно лучше: использовать тип ввода именно для этих данных
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email
+    -->
     <input class="auth-form__input" type="text" placeholder="Введите почту" required>
+    <!--
+      Ошибки ввода сделаны отдельными полями.
+      Можно лучше: показать все ошибки единым списком, который смогут читать screen readers.
+      См https://medium.com/net-magazine/create-simple-accessible-web-forms-535cd253dee2
+    -->
     <span class="auth-form__error-message" id="error-email-login">
         Введите корректный email!
+      <!--
+        Сделан дополнительный отступ для закрывающего тэга.
+        Такое форматирование отступов затрудняем чтение разметки.
+        Нужно исправить: сделать одинаковые отступы.
+        VSCode может делать отступы автоматически, см https://linuxpip.org/auto-indent-vscode/
+      -->
       </span>
+    <!-- Использовано слово "subtitle" для названия каждого едитора в форме. -->
+    <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
     <span class="auth-form__subtitle">Пароль</span>
+    <!-- 
+      Использован type="text" для вводе пароля.
+      Такой вариант не скрывает введенные символы и не безопасен.
+      Нужно изменить: использовать type="password"
+      См https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password
+    -->
     <input class="auth-form__input" type="text" placeholder="Введите пароль" required>
     <span class="auth-form__error-message auth-form__error-message_hide" id="error-password-login">
         Поле не может быть пустым!
       </span>
+    <!--
+      Использовано сокращение "usr"
+      Надо исправить: использовать полное слово "user"
+      См https://javascript.info/ninja-code#use-abbreviations
+    -->
+    <!--
+      Для сообщения "Неправильный логин или пароль" использован класс "usr-exists"
+      Надо исправить: сделать название класса в соответствии со смыслом сообщения.
+    -->
     <span class="auth-form__error-message auth-form__error-message_usr-exists" id="error-not-logged">
         Неправильный логин или пароль
       </span>
     <button class="button auth-form__button" name="login-button" disabled>Войти</button>
+    <!--
+      Класс "auth-form__other-action" добавлен для текта "или"
+      Надо исправить: этот текст не является actionable element и должен выглядеть как обычный текст.
+    -->
     <span class="auth-form__other-action">
+      <!--
+        Надо изменить: элемент "Зарегистрироваться" позволяет пользователю выполнить действие и для него надо использовать тэг "button" или "a"
+        См https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+      -->
+      <!--
+        В названии элемента использовано слово 'click': auth-form__other-action-click
+        Хотя это действие может начинаться через touch или голосовое управление.
+        Надо исправить: использовать название по смыслу результата, например 'register'
+      -->
         или <span class="auth-form__other-action-click" id="open-signup-form">Зарегистрироваться</span>
       </span>
   </form>
 </section>
 
+<!-- Название "auth-form__wrapper" использовано вне блока "auth-form" -->
 <section class="auth-form__wrapper_hide" id="signup-form">
   <form class="auth-form">
+    <!-- Для actionable UI элемента использован тэг "div" -->
     <div class="auth-form__close" id="close-signup-form"></div>
     <h4 class="auth-form__title">Регистрация</h4>
+    <!-- Использовано слово "subtitle" для названия каждого едитора в форме. -->
+    <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
     <span class="auth-form__subtitle">E-mail</span>
+    <!-- Использован обобщенный type="text", хотя должен быть введен именно email адрес -->
     <input class="auth-form__input" placeholder="Введите почту" type="text" required>
     <span class="auth-form__error-message auth-form__error-message_hide" id="error-email">Введите корректный email!</span>
+    <!-- Использован "span" для названия поля ввода, хотя для этой конфигурации введен тэг "label" -->
+    <!-- Использовано слово "subtitle" для названия каждого едитора в форме. -->
     <span class="auth-form__subtitle">Пароль</span>
+    <!-- Использован type="text" для вводе пароля. -->
     <input class="auth-form__input" type="text" placeholder="Введите пароль" minlength="8"
           required>
     <span class="auth-form__error-message" id="error-password">
@@ -284,20 +493,103 @@
         Такой пользователь уже есть
       </span>
     <button class="button auth-form__button">Зарегистрироваться</button>
+    <!-- Класс "auth-form__other-action" добавлен для текта "или" -->
+    <!-- В названии элемента использовано слово 'click': auth-form__other-action-click -->
+    <!-- Для actionable UI элемента использован тэг "span" -->
     <span class="auth-form__other-action">
         или <span class="auth-form__other-action-click" id="open-login-form">Войти</span>
       </span>
   </form>
 </section>
 
+<!-- Название "auth-form__wrapper_hide" использовано вне блока "auth-form" -->
 <section class="auth-form__wrapper_hide" id="signup-ok">
   <form class="auth-form">
+    <!-- Для actionable UI элемента использован тэг "div" -->
     <div class="auth-form__close" id="close-signup-ok-form"></div>
     <h4 class="auth-form__title">Пользователь успешно зарегистрирован!</h4>
     <span class="auth-form__other-action auth-form__other-action_left">
-      <span class="auth-form__other-action-click" id="open-login-modal">Выполнить вход</span>
+    <!-- В названии элемента использовано слово 'click': auth-form__other-action-click -->
+    <!-- Для actionable UI элемента использован тэг "span" -->
+    <span class="auth-form__other-action-click" id="open-login-modal">Выполнить вход</span>
     </span>
   </form>
 </section>
 
 <div class="overlay"></div>
+<!-- 
+  Общий комментарий:
+    Отлично:
+      - В разметке использованы тэги header/section/main/footer
+    
+    Можно лучше:
+      - использовать больше семантических тэгов: article/nav/aside
+        См https://developer.mozilla.org/en-US/docs/Glossary/Semantics + https://www.w3schools.com/html/html5_semantic_elements.asp
+
+    Надо исправить:
+      - использовать больше семантических тэгов вместо span/div
+      - улучшить смысловые названия элементов
+      - декларировать элементы внутри блоков
+
+  Общие замечания:
+
+    - Название этого файла содержит русские буквы: "задание 1.html"
+    (Этот файл лежит в архиве [codereview-test-html-3.zip](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7d9428a3-04f8-4f1a-8c9b-6c93f760fd38/codereview-test-html-3.zip))
+    
+    Однако, из-за внутренних особенностей формата ZIP по хранению названий файлов, это название показывается как "ºáñá¡¿Ñ 1.html",
+    если в системе windows выставлено значение "English" для настройки "Language for non-unicode programs".
+    Видимо, файл был сохранен в windows, где для настройки "Language for non-unicode programs" выставлено значение "Русский"
+    (или в аналогичной конфигурации MacOS/Linux)
+    Такое использование русских букв в названиях файлов может серьезно затруднять работу других сотрудников в команде.
+    Необходимо изменить: использовать в именах файлов только английские символы, и символы допустимые 
+    сразу для нескольких популярных платформ (windows/MacOS/Linux).
+    См различия в допустимых символах в именах файлов в разных файловых системах: https://en.wikipedia.org/wiki/Filename
+    См особенности имен файлов в ZIP архивах: http://forum.oszone.net/thread-205131-2.html + https://superuser.com/questions/330760/
+ -->
+
+ <!-- 
+  Комментарии к index.html:
+
+  отлично:
+    - использованы head/title/charset/lang/viewport/description/author/favicon
+    - сделана адаптивная верстка под разные размеры браузера
+    - для элементов тулбара сделано выпадающее меню на малом размере браузера
+    - для футера сделана перестройка элементов из горизонтального в вертикальное расположение
+
+  надо изменить:
+
+    - элемент [X] "close-signup-ok-form" на большом размере браузера расположен нормально,
+      на среднем размере не виден, на маленьком размере расположен по центру.
+      Нужно изменить настройки для показа "close-signup-ok-form" что бы он правильно располагался
+
+    - на любой ширине юраузера есть горизонтальная прокрутка - это затрудняет просмотр контента
+    - проход фокуса не настроен на каждый actionable элемент: logout/User/"Искать"/card_icon - по Tab не попасть на некоторые элементы, reader их не прочитает\\
+    - кнопка "Искать" сделана через обобщенный элемент "span", хотя есть более подходящий "button" - reader не прочитает, фокуса по tab  нет
+    - элементы Главная/Юзер/menu_logout не выровнены по горизонтали - выглядит недоделкой
+    - отрисовка элемента card_icon настроена поверх элементов card_date/card_title - мешает просматривать контент, выглядит недоделкой
+    - элемент card__warning не виден - выглядит недоделкой
+    - элемент card_date с датой сделан через обобщенный тэг "p" хотя есть более подходящий тэг "time" - reader не будет читать как дату
+    - ширина элемента header__form-input не совпадает с шириной header__button на малом/среднем размерах браузера - выглядит недоделкой
+    - использованы "англицизмы": слово "Юзер" вместо "Профиль/Личный кабинет" - выглядит недоделкой
+    - весь элемент card сделан на тэге "a" и браузер будет открывать эту ссылку, хотя у каждой карточки есть ссылка в "card_src" - невозможно открыть card_src
+    - настройки разметки обрезают изображение card_mock.png на всех размерах браузера - не понятно что на картинке, не видны header/footer надписи на картинке
+    - в основном меню используются русские и английские слова: Explorer|Главная|Юзер, E-mail|Пароль - выглядит недоделкой, будет непонятно non-IT пользователям
+    - на малом размере браузера картинка card_mock.png не занимает всю ширину элемента card и оставляет пустое пространство справа - выглядит недоделкой
+    - на малой и средней ширине браузера текст футера выходит за границы элемента root__section справа - сложно читать, выглядит недоделкой
+    - clickable область элемента "Юзер" больше надписи, браузер показывает click курсор на пустой области вокруг текста - позволяет ошибочно выполнить действие
+    - на большой ширине браузера расположение элементов footer__links не меняется на "в строку" - выглядит недоделкой
+    - Для заголовока страницы использовано очень обобщенное слово "Explorer": оно будет использоваться браузером в закладках и для названия tab page, по нему будет сложно понять что это за страница/ссылка
+    - Клик по элементу menu__logout вызывает обработчик элемента "Юзер" - выполнение непредсказуемого действия, отстуствие возможности выполнить выход из системы
+    - Длинный текст в "card_title" наползает на элемент "card_text" - очень трудно читать, выглядит недоделкой
+    - диалог auth-form показывается вверху за границей видимой области браузера и блокирует всю страницу при обновлении страницы, если страница до обновления была прокручена вниз
+    - В контенте card_text вставлены элементы "br", это мешает браузеру делать перенос строк по ширине элемента card_text - очень трудно читать, выглядит недоделкой
+    - Элемент "Введите пароль" не скрывает введенные символы - позволяет всем вокруг прочитать пароль
+    - Сообщение "Введите корректный email!" не скрывается сразу после ввода корректного значения - не понятно подходит новое значение или нет
+    - Сообщение "Длина пароля должна быть.." не скрывается после ввода корректного значения - не понятно подходит новое значение или нет
+    - Сообщение "Неправильный логин или пароль"|"Пользователь уже есть" показывается сразу при окрытии формы - не понятно почему, ведь не было никаких операций login/register
+    - Элемент "login-button" выглядит как "disabled" элемент - не понятно работает он или нет
+    - На малой высоте браузера не появляется вертикальная прокрутка для close-signup-ok-form|login-form|signup-form - элементы скрываются и не понятно где кнопки login/register
+    - На первом показе страницы показывается сообщение "Пользователь успешно зарегистрирован!" и ссылка "Выполнить вход" - не понятно зачем эти сообщения и зачем в этом диалоге ссылка
+    - диалог "Пользователь успешно зарегистрирован!" показывается после каждого обновления страницы даже если уже был вход в систему, хотя не было никаких действий по регистрации
+
+  -->
