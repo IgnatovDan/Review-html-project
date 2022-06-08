@@ -21,6 +21,11 @@
       Дочерние элементы для "menu" выглядят как навигация по приложению.
       Для таких элементов надо использовать тэг "nav", https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
     -->
+    <!-- 
+      Дочерние элементы для "menu" выглядят как список.
+      Для таких элементов лучше использовать тэги "ul + li" для явной декларации "перечисление похожих элементов"
+      https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    -->
     <!-- Пример замечания:
       Отлично: использование ссылки для логотипа - правильное решение!
     -->
@@ -32,6 +37,11 @@
     -->
     <div class="menu__mobile" id="mobile-menu"></div>
     <div class="menu__items-list">
+      <!-- 
+        Дочерние элементы для "menu__items-list" выглядят как список.
+        Для таких элементов лучше использовать тэги "ul + li" для явной декларации "перечисление похожих элементов"
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+      -->
       <a href="./" class="menu__link menu__link_selected">Главная</a>
       <div class="menu__items-single-item">
         <!--
@@ -104,8 +114,14 @@
   </div>
   <!--
     Исользован класс "preloader__hide"
-    Нужно исправить: по такому соглашению называются элементы блоков, а это модификатор блока
+    Нужно исправить: по такому соглашению называются элементы блоков, а этот класс выглядит как модификатор
     См https://ru.bem.info/methodology/naming-convention/
+  -->
+  <!--
+    Использован класс "preloader-not-found" для сообщения "Ничего не найдено".
+    Это сообщение показывается после выполнения операции поиска и название "preloader"
+    затрудняет понимание когда/где используется этот DOM элемент.
+    Нужно исправить: сделать отдельный DOM элемент с этим сообщением и показыать его вместо перенастройки содержимого блока "preloader".
   -->
   <div
     class="preloader__message preloader__hide"
@@ -295,6 +311,12 @@
   </div>
   <button class="button results__button">Показать еще</button>
 </main>
+
+<!--
+  Добавлен класс "results__about" (т.е. это "элемент about" из блока "results"),
+  хотя эта DOM node не дочерняя к DOM node с классом "results".
+  Нужно исправить: декларировать классы "элемент блока" на дочерних нодах их "блока"
+-->
 <section class="about results__about">
   <h3 class="about__title">Об авторе</h3>
   <div class="about__text">
@@ -338,9 +360,19 @@
       Нужно исправить: сделать одинаковые переносы.
       VSCode может делать переносы автоматически, см https://stackoverflow.com/questions/50241599/vscode-automatically-adding-new-lines-on-save
     -->
+    <!-- 
+      Дочерние элементы для "footer__links" выглядят как список.
+      Для таких элементов лучше использовать тэги "ul + li" для явной декларации "перечисление похожих элементов"
+      https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    -->
     <a href="#" class="footer__social-icon" target="_blank">
       <img src="./images/social/git.svg" alt="Logo" />
     </a>
+    <!-- 
+      Использование тэга 'br' выглядит как средство для визуального оформления.
+      Для этой задачи лучше использовать "display: block;"
+      https://stackoverflow.com/questions/17494029/has-css-replaced-br
+    -->
     <br />
     <a href="#" class="footer__social-icon" target="_blank">
       <img
@@ -518,7 +550,7 @@
       - В разметке использованы тэги header/section/main/footer
     
     Можно лучше:
-      - использовать больше семантических тэгов: article/nav/aside
+      - использовать больше семантических тэгов: article/nav/aside/ul
         См https://developer.mozilla.org/en-US/docs/Glossary/Semantics + https://www.w3schools.com/html/html5_semantic_elements.asp
 
     Надо исправить:
