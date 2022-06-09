@@ -88,6 +88,23 @@
         См https://developer.mozilla.org/en-US/docs/Learn/Forms
       -->
       <!--
+        Элементы для поиска оформлены как обычные элементы, хотя их можно декларировать как "поиск"
+        и сделать их назначение более доступным для некоторых пользователей:
+        https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/search_role
+        Можно лучше: добавить <form role="search">
+      -->
+      <!--
+        "input" объявлен как type="text" хотя предназначен для поиска:
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search
+        Нужно исправить: заменить на type="search"
+      -->
+      <!--
+        Для "input" не задано название, вставлен только текст для placeholder, который исчезает при вводе значения.
+        Такое решение ухудшает понимание цели этого input в некоторых ситуациях для конечных пользователей.
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search#search_form_labels_and_accessibility
+        Нужно исправить: сделать явное задание названия для input через label/'aria-label'
+      -->
+      <!--
         Отлично: атрибуты для тэга оформлены на отдельных строчках - это очень облегчает чтение разметки
       -->
       <input
