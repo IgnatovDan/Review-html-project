@@ -204,6 +204,12 @@
           <h4 class="card_title">Why do we use it?</h4>
           <!-- Использовано одинарное подчеркивание "card_img" -->
           <div class="card_text">
+            <!--
+              Использован 'br' для разрыва текста на строки.
+              С таким разрывом на строки будет оставаться пустое место без текста на больших экранах
+              а на маленьких экранах будут лишние разрывы строк там где есть место для текста.
+              Нужно изменить: убрать 'br'.
+            -->
             It is a long established fact that a reader will be distracted by<br />
             the readable content of a page when looking at its layout. The point<br />
             of using Lorem Ipsum is that it has a more-or-less normal<br />
@@ -322,6 +328,12 @@
   <div class="about__text">
     Vivamus sed volutpat odio. Praesent placerat gravida erat, in ornare
     ex.
+    <!--
+      Использование 'br' для разрыва текста выглядит как разбивка на параграфы.
+      Тэг 'br' затрудняет навигацию по контенту в некоторых ситуациях:
+      https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML#text_content
+      Нужно изменить: использовать подходящий для задачи тэг, например 'p'.
+    -->
     <br />
     Nullam vitae tellus euismod, egestas diam vel, maximus orci. Nulla
     fringilla, enim ut pharetra rhoncus, arcu enim aliquet turpis, ac
@@ -370,7 +382,9 @@
     </a>
     <!-- 
       Использование тэга 'br' выглядит как средство для визуального оформления.
-      Для этой задачи лучше использовать "display: block;"
+      Тэг 'br' затрудняет навигацию по контенту в некоторых ситуациях:
+      https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML#text_content
+      Для этой задачи лучше использовать "display: block;" или "p" или "li"
       https://stackoverflow.com/questions/17494029/has-css-replaced-br
     -->
     <br />
